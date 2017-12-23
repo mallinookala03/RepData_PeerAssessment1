@@ -125,15 +125,6 @@ $(document).ready(function () {
 <h3>About</h3>
 <p>This was the first project for the <strong>Reproducible Research</strong> course in Coursera’s Data Science specialization track. The purpose of the project was to answer a series of questions using data collected from a <a href="http://en.wikipedia.org/wiki/Fitbit">FitBit</a>.</p>
 </div>
-<div id="synopsis" class="section level2">
-<h2>Synopsis</h2>
-<p>The purpose of this project was to practice:</p>
-<ul>
-<li>loading and preprocessing data</li>
-<li>imputing missing values</li>
-<li>interpreting data to answer research questions</li>
-</ul>
-</div>
 <div id="data" class="section level2">
 <h2>Data</h2>
 <p>The data for this assignment was downloaded from the course web site:</p>
@@ -150,15 +141,18 @@ $(document).ready(function () {
 </div>
 <div id="loading-and-preprocessing-the-data" class="section level2">
 <h2>Loading and preprocessing the data</h2>
-<p>Download, unzip and load data into data frame <code>data</code>.</p>
-<pre class="r"><code>if(!file.exists(&quot;getdata-projectfiles-UCI HAR Dataset.zip&quot;)) {
-        temp &lt;- tempfile()
-        download.file(&quot;http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip&quot;,temp)
-        unzip(temp)
-        unlink(temp)
+<div id="load-the-data-i.e.read.csv" class="section level5">
+<h5>Load the data (i.e. read.csv())</h5>
+<pre class="r"><code>if(!file.exists('activity.csv')){
+    unzip('activity.zip')
 }
 
 data &lt;- read.csv(&quot;activity.csv&quot;)</code></pre>
+</div>
+<div id="processtransform-the-data-if-necessary-into-a-format-suitable-for-your-analysis" class="section level5">
+<h5>Process/transform the data (if necessary) into a format suitable for your analysis</h5>
+<pre class="r"><code>#data$interval &lt;- strptime(gsub(&quot;([0-9]{1,2})([0-9]{2})&quot;, &quot;\\1:\\2&quot;, data$interval), format='%H:%M')</code></pre>
+</div>
 </div>
 <div id="what-is-mean-total-number-of-steps-taken-per-day" class="section level2">
 <h2>What is mean total number of steps taken per day?</h2>

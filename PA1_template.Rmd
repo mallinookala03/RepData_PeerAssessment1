@@ -2,13 +2,6 @@
 This was the first project for the **Reproducible Research** course in Coursera's Data Science specialization track. The purpose of the project was to answer a series of questions using data collected from a [FitBit](http://en.wikipedia.org/wiki/Fitbit).
 
 
-##Synopsis
-The purpose of this project was to practice:
-
-* loading and preprocessing data
-* imputing missing values
-* interpreting data to answer research questions
-
 ## Data
 The data for this assignment was downloaded from the course web
 site:
@@ -29,19 +22,18 @@ The variables included in this dataset are:
 The dataset is stored in a comma-separated-value (CSV) file and there are a total of 17,568 observations in this dataset.
 
 ## Loading and preprocessing the data
-
-Download, unzip and load data into data frame `data`. 
-```{r}
-if(!file.exists("getdata-projectfiles-UCI HAR Dataset.zip")) {
-        temp <- tempfile()
-        download.file("http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip",temp)
-        unzip(temp)
-        unlink(temp)
+##### Load the data (i.e. read.csv())
+```{r, results='markup', warning=TRUE, message=TRUE}
+if(!file.exists('activity.csv')){
+    unzip('activity.zip')
 }
 
 data <- read.csv("activity.csv")
 ```
-
+##### Process/transform the data (if necessary) into a format suitable for your analysis
+```{r}
+#data$interval <- strptime(gsub("([0-9]{1,2})([0-9]{2})", "\\1:\\2", data$interval), format='%H:%M')
+```
 
 ## What is mean total number of steps taken per day?
 Sum steps by day, create Histogram, and calculate mean and median.
